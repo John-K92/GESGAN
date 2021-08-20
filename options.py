@@ -31,9 +31,9 @@ class TrainOptions():
         
         ## Structure and Texture 
         # data loader realted 
-        self.parser.add_argument('--img_dir', type=str, default="/home/JW/AssetGAN/GESGAN/data/train", help='dataset directory')   
+        self.parser.add_argument('--img_dir', type=str, default="./data/train", help='dataset directory')   
         # ouptput related
-        self.parser.add_argument('--save_path', type=str, default='/home/JW/AssetGAN/GESGAN/save/', help='model directory to be saved')   
+        self.parser.add_argument('--save_path', type=str, default='./save/', help='model directory to be saved')   
         self.parser.add_argument('--save_name', type=str, default='GESGAN', help='filename of the trained model')          
         # model related
         self.parser.add_argument('--G_nlayers', type=int, default=6, help='number of layers in texture generator G')
