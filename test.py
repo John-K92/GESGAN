@@ -12,6 +12,8 @@ def transform_img(model, imgs, style, opts):
     """
     imgs: 입력받은 test 이미지/이미지들
     style: 각 스타일 idx의 텐서
+
+    이미지 변환 후 parsing된 디렉토리에 저장
     """
     for idx, img in enumerate(imgs):
         if opts.gpu:
@@ -41,7 +43,7 @@ def main():
     if opts.gpu:
         model.cuda()
     model.eval()
-    
+
     if not os.path.exists(opts.result_dir):
         os.mkdir(opts.result_dir)
 
