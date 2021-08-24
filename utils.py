@@ -159,7 +159,7 @@ class ImageStyleFolder(Dataset):
                     img = Image.open(img_path)
                     img = img.resize((400, 400))
                     Z = pil2tensor(img).unsqueeze(dim=0).to(self.device)
-                    self.Z[idx][ref_idx].append(Z)
+                    self.Z[idx][ref_idx] = (Z)
                 else:
                     # 원본 이미지의 경우, 좌측은 distance-based 그리고 원본 이미지(y)로 구성되어
                     # 이를 나누는 과정
@@ -169,13 +169,13 @@ class ImageStyleFolder(Dataset):
                     ori_wd = self.ori_wd // 2
                     X = pil2tensor(img.crop((0,0,ori_wd,self.ori_ht))).unsqueeze(dim=0).to(self.device)
                     Y = pil2tensor(img.crop((ori_wd,0,ori_wd*2,self.ori_ht))).unsqueeze(dim=0).to(self.device)
-                    self.X[idx].append(X)
-                    self.Y[idx].append(Y)
+                    self.X[idx] = X
+                    self.Y[idx] = Y
 
-                    _X = pil2tensor(pixlate(img).crop((0,0,ori_wd,self.ori_ht))).unsqueeze(dim=0).to(self.device)
-                    self.X[idx].append(_X)
-                    _Y = pil2tensor(pixlate(img).crop((ori_wd,0,ori_wd*2,self.ori_ht))).unsqueeze(dim=0).to(self.device)
-                    self.Y[idx].append(_Y)
+                    # _X = pil2tensor(pixlate(img).crop((0,0,ori_wd,self.ori_ht))).unsqueeze(dim=0).to(self.device)
+                    # self.X[idx].append(_X)
+                    # _Y = pil2tensor(pixlate(img).crop((ori_wd,0,ori_wd*2,self.ori_ht))).unsqueeze(dim=0).to(self.device)
+                    # self.Y[idx].append(_Y)
             self.labels.append(idx)
 
 
